@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Aww_Api.Models.ImageViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-danger">Hello this is aww api</h1>
+
+
+    <a class="btn btn-success" asp-action="Create">Create New</a>
+
+<h1>This is things and stuff</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageUrl)
+                    <img height="200px" width="200px" src="@item.ImageUrl" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

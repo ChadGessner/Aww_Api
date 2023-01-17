@@ -1,0 +1,59 @@
+﻿@model APIIndexVM
+
+@{
+    ViewData["Title"] = "IndexPOST";
+}
+
+<h1>Api Controller</h1>
+
+<form method="post" class="card p-4 alert-primary">
+    <p><strong>Set Api Url:</strong> This API is for subreddits only the decault URL is http://reddit.com/r/aww/.json any provided url will be ignored unless it is in similar format...</p>
+    <label class="col-form-label text-center" >ENTER U R L</label>
+    <input asp-for=@Model.URL class="form-control" placeholder="http://reddit.com/r/aww/.json" type="text" />
+    <input type="submit" class="btn btn alert-info mt-2"/>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelList[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelList[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelList[0].ImageURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelList[0].ImageURL)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ModelList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.ImageURL)
+                    </td>
+                <td>
+                    <img height="200px" width="200px" src=@item.ImageURL/>
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.ImageURL }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    <a asp-action="Create" asp-route-id=@item.OrderID >Create New</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AwwDTO\AwwDTO.csproj" />
+    <ProjectReference Include="..\Aww_Api_Fetch\Aww_Api_Fetch.csproj" />
+    <ProjectReference Include="..\Aww_Api_Repository\Aww_Api_Repository.csproj" />
+  </ItemGroup>
+
+</Project>
