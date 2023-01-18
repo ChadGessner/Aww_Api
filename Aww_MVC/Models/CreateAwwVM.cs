@@ -7,7 +7,9 @@ namespace Aww_MVC.Models
         public APIFetchVM VM { get; set; }
         public int FetchId { get; set; }
         public int CategoryId { get; set; }
-        public CategoryVM Category {get;set;}
+        public CategoryVM Category { get; set; }
+
+        
         public static CreateAwwVM GetNewAwwVM(APIFetchVM vm, CategoryVM cat)
         {
             return new CreateAwwVM()

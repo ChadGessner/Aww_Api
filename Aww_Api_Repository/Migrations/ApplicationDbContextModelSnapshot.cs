@@ -35,7 +35,7 @@ namespace AwwApiRepository.Migrations
 
                     b.HasKey("UrlId");
 
-                    b.ToTable("ApiUrls");
+                    b.ToTable("ApiUrls", (string)null);
                 });
 
             modelBuilder.Entity("AwwDTO.AwwCategoryDT", b =>
@@ -52,7 +52,7 @@ namespace AwwApiRepository.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("AwwDTO.AwwDT", b =>
@@ -81,7 +81,7 @@ namespace AwwApiRepository.Migrations
 
                     b.HasIndex("AwwCategoryDTCategoryId");
 
-                    b.ToTable("AwwImages");
+                    b.ToTable("AwwImages", (string)null);
                 });
 
             modelBuilder.Entity("AwwDTO.AwwDT", b =>

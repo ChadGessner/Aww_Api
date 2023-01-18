@@ -17,6 +17,14 @@ namespace AwwDomain
         {
             return _db.AddCategory(cat);
         }
+        public ApiUrlDTO GetLastUrl()
+        {
+            int max = _db
+                .GetApiUrls()
+                .Max(x => x.UrlId);
+
+            return _db.GetUrlById(max);
+        }
         public IEnumerable<AwwCategoryDT> GetAllCategories()
         {
             return _db.GetCategories();

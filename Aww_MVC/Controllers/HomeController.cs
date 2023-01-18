@@ -28,16 +28,15 @@ namespace Aww_MVC.Controllers
                 URL = @"http://reddit.com/r/aww/.json",
             };
             
-            vm.ModelList = APIFetchVM.GetVMFromDictionary(_handle.SetUrl(vm.URL));
+            vm.ModelList = APIFetchVM.GetVMFromDictionary(_db.ServeApiResults(vm.URL));
             return View(vm);
         }
         
         public IActionResult IndexPOST(APIIndexVM vm)
         {
             _db.AddUrl(APIIndexVM.GetDTOFromVM(vm));
-            
-            
-            vm.ModelList = APIFetchVM.GetVMFromDictionary(_handle.SetUrl(vm.URL));
+            string url = _db.GetLastUrl().Url;
+            vm.ModelList = APIFetchVM.GetVMFromDictionary(_db.ServeApiResults(url));
             return View(vm);
         }
         public IActionResult Create(int id)
@@ -46,9 +45,10 @@ namespace Aww_MVC.Controllers
                 .GetAllCategories()
                 .ToDictionary(k => k.Category, v => v.CategoryId);
             APIFetchVM fetchVM = APIFetchVM
-                .GetVMFromDictionary(_handle.SetUrl("http://reddit.com/r/goatsonhorses/.json"))
+                .GetVMFromDictionary(_db.ServeApiResults("http://reddit.com/r/aww/.json"))
                 .SingleOrDefault(api=>api.OrderID == id);
-            CreateAwwVM vm = CreateAwwVM.GetNewAwwVM(fetchVM, new CategoryVM() { Id=-1,CategoryName=""});
+            CreateAwwVM vm = CreateAwwVM
+                .GetNewAwwVM(fetchVM, new CategoryVM() { Id=-1,CategoryName=""});
             
             return View(vm);
         }
