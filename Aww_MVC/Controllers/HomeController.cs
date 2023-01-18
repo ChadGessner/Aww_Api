@@ -18,9 +18,7 @@ namespace Aww_MVC.Controllers
             _logger = logger;
             _handle = new ApiHandler();
             _db = new Interactor();
-            
         }
-
         public IActionResult Index()
         {
             APIIndexVM vm = new APIIndexVM()
@@ -28,24 +26,29 @@ namespace Aww_MVC.Controllers
                 URL = @"http://reddit.com/r/aww/.json",
             };
             
-            vm.ModelList = APIFetchVM.GetVMFromDictionary(_db.ServeApiResults(vm.URL));
+            vm.ModelList = APIFetchVM
+                .GetVMFromDictionary(_db.ServeApiResults(vm.URL));
             return View(vm);
         }
-        
         public IActionResult IndexPOST(APIIndexVM vm)
         {
             _db.AddUrl(APIIndexVM.GetDTOFromVM(vm));
-            string url = _db.GetLastUrl().Url;
-            vm.ModelList = APIFetchVM.GetVMFromDictionary(_db.ServeApiResults(url));
+            string url = _db
+                .GetLastUrl().Url;
+            vm.ModelList = APIFetchVM
+                .GetVMFromDictionary(_db.ServeApiResults(url));
             return View(vm);
         }
-        public IActionResult Create(int id)
+        public IActionResult Create(string fancyId, string URL)
         {
+            int id = int.Parse(fancyId);
+            
+            Console.WriteLine(id + "          " + URL);
             ViewBag.Category = _db
                 .GetAllCategories()
                 .ToDictionary(k => k.Category, v => v.CategoryId);
             APIFetchVM fetchVM = APIFetchVM
-                .GetVMFromDictionary(_db.ServeApiResults("http://reddit.com/r/aww/.json"))
+                .GetVMFromDictionary(_db.ServeApiResults(URL))
                 .SingleOrDefault(api=>api.OrderID == id);
             CreateAwwVM vm = CreateAwwVM
                 .GetNewAwwVM(fetchVM, new CategoryVM() { Id=-1,CategoryName=""});

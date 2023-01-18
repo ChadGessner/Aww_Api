@@ -8,7 +8,8 @@
 
 <h4>AwwCategoryDT</h4>
 <hr />
-
+<p class="text-sm-start text-decoration-underline">ex: Clown Porn</p>
+<img height="200px" width="200px" src="https://imgur.com/27dIXH4.jpg" />
 <div class="row">
     <div class="col-md-4">
         <form method="post" asp-action="Create">
@@ -20,7 +21,7 @@
                 <span asp-validation-for="CategoryName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn alert-info mt-1" />
             </div>
         </form>
     </div>
@@ -32,4 +33,10 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <style>
+        body {
+            background: linear-gradient(120deg,transparent,orange 99%);
+        }
+
+    </style>
 }

@@ -43,7 +43,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
+                <partial name="_DbImageViewPartial" model=@item />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryName)

@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Category</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create Category</a>
 </p>
 <table class="table">
     <thead>
@@ -39,3 +39,18 @@
 }
     </tbody>
 </table>
+@{
+    <style>
+        tbody{
+                background: linear-gradient( 170deg,transparent, orange 99%);
+        }
+        thead{
+                background: linear-gradient( 170deg,transparent, orange 99%);
+        }
+        body{
+            background: linear-gradient(140deg, transparent, orange 99%);
+                background-blend-mode: hard-light;
+
+        }
+    </style>
+}
