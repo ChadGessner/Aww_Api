@@ -27,7 +27,7 @@
         </dt>
         <dd class = "col-sm-10">
             
-            <img height="200px" width="200px" src=@Model.ImageUrl />
+            <img height="400px" width="400px" src=@Model.ImageUrl />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CategoryName)
@@ -47,3 +47,12 @@
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
 </div>
+@section scripts{
+    <style>
+    body{
+            background: linear-gradient(90deg, transparent, purple 99%);
+    }
+        
+
+    </style>
+}

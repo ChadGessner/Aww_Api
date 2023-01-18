@@ -4,29 +4,58 @@
     ViewData["Title"] = "IndexPOST";
     
 }
+<div class="jumbotron">
+    <h1>Api Controller</h1>
+</div>
 
-<h1>Api Controller</h1>
 
-<form method="post" class="card p-4 alert-primary">
-    <p><strong>Set Api Url:</strong> This API is for subreddits only the default URL is http://reddit.com/r/aww/.json any provided url will be ignored unless it is in similar format...</p>
-    <label class="col-form-label text-center" >ENTER U R L</label>
-    <input asp-for=@Model.URL class="form-control" placeholder="http://reddit.com/r/aww/.json" type="text" />
-    <input type="submit" class="btn btn alert-info mt-2"/>
-</form>
+<div class="row w-100">
+    <div class="col">
+        <form method="post" class="card p-4 alert-primary ">
+            <p class="text-center" ><strong>Set Api Url:</strong></p>
+            <label class=" text-center" >ENTER U R L</label>
+            <input 
+                    asp-for=@Model.URL 
+                    class="form-control " 
+                    placeholder="http://reddit.com/r/aww/.json" 
+                    type="text" />
+            <input asp-controller="Home" asp-action="IndexPOST" type="submit" class="btn btn alert-info mt-2"/>
+            @*<div class="row flex-grow-3 justify-content-around align-items-center w-100">*@
+
+
+
+        </form>
+    </div>
+    <div class="col">
+        <form method="post" class="card p-4 alert-primary ">
+            <p class="text-center" ><strong>Select from List:</strong></p>
+            <label class="col-form-label text-center" >ENTER U R L</label>
+            <select asp-for=@Model.URL typeof="text" class="form-select">
+                @foreach (var url in Model.UrlList)
+                {
+                                <option>
+                        @url.Url
+                                </option>
+                }
+                </select>
+                <input asp-controller="Home" asp-action="IndexPOST" type="submit" class="btn btn alert-info mt-2"/>
+        </form>
+    </div>
+</div>
 <table class="table alert-info">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ModelList[0].Title)
+                Id
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ModelList[0].Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ModelList[0].ImageURL)
+                Actions
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ModelList[0].ImageURL)
+                Image
             </th>
             <th></th>
         </tr>
@@ -41,9 +70,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
-                    <td>
-                        <partial name="_ApiUrlFormPartial" model=@item />
-                    </td>
+                    
                 
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
@@ -60,6 +87,9 @@
                         >Create New
                         </a>
                 </td>
+                <td>
+                    <partial name="_ApiUrlFormPartial" model=@item />
+                </td>
             </tr>
         }
     </tbody>
@@ -68,7 +98,7 @@
 @{
     <style>
         body{
-            background-color:azure;
+            background: linear-gradient(100deg,magenta 1%,transparent);
         }
     </style>
 }

@@ -24,6 +24,10 @@ namespace Aww_MVC.Controllers
             APIIndexVM vm = new APIIndexVM()
             {
                 URL = @"http://reddit.com/r/aww/.json",
+                UrlList = _db
+                .GetAllUrls()
+                .DistinctBy(x=>x.Url)
+                .ToList(),
             };
             
             vm.ModelList = APIFetchVM
@@ -37,6 +41,10 @@ namespace Aww_MVC.Controllers
                 .GetLastUrl().Url;
             vm.ModelList = APIFetchVM
                 .GetVMFromDictionary(_db.ServeApiResults(url));
+            vm.UrlList = _db
+                .GetAllUrls()
+                .DistinctBy(x => x.Url)
+                .ToList();
             return View(vm);
         }
         public IActionResult Create(string fancyId, string URL)

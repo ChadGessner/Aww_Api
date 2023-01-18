@@ -4,11 +4,11 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Add to Database</h1>
 
-<h4>CreateAwwVM</h4>
+<h4>Save Image</h4>
 <hr />
-<img class="mb-4" height="200px" width="200px" src=@Model.VM.ImageURL />
+<img class="mb-4" height="400px" width="400px" src=@Model.VM.ImageURL />
 <hr />
 <h4>@Model.VM.Title</h4>
 
@@ -31,7 +31,7 @@
             <label asp-for=@Model.VM.Title></label>
             <input asp-for=@Model.VM.Title value=@Model.VM.Title type="text"/>
             <div class="form-group">
-                <input  type="submit" class="btn btn-primary" />
+                <input  type="submit" class="btn btn alert-info mt-4" />
             </div>
         </form>
     </div>
@@ -43,4 +43,10 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <style>
+        body{
+            background-color: lightseagreen;
+        }
+        
+    </style>
 }
